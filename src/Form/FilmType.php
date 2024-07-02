@@ -18,6 +18,7 @@ class FilmType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('price')
             ->add('salle', EntityType::class, [
                 'class'=>Salle::class,
                 'choice_label'=>'name',

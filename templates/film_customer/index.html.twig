@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmCustomerController!{% endblock %}
+
+{% block body %}
+
+    <h1>Les films</h1>
+
+    <div class="row">
+
+        {% for film in films %}
+            <div class="col-6">
+                <div class="card" style="width: 18rem;">
+                    {% for image in film.image %}
+                    <img src="{{ vich_uploader_asset(image) }}" class="card-img-top" alt="...">
+                    {% endfor %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ film.name }}</h5>
+                        <a class="btn btn-warning" href="{{ path('app_cart_index_add',{id:film.id,quantity:1}) }}">Ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

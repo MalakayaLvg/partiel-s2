@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+    <h3>Hello <strong>{{ app.user.username }}</strong></h3>
+{#    <a href="{{ path('app_profile_order_history') }}" class="btn btn-primary">Historique des commandes</a>#}
+
+    <div class="form-control">
+        <div class="row">
+            {% for paymentMethod in app.user.paymentMethods %}
+                <div class="col-3 card m-2 p-2">
+                    <h6>Card : {{ paymentMethod.cardNumber }}</h6>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="my-2">
+            <h3>Entrer une nouvelle methode de paiement</h3>
+            {{ form(formPayment) }}
+        </div>
+    </div>
+
+{% endblock %}

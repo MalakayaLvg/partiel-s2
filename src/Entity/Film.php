@@ -35,6 +35,9 @@ class Film
     #[ORM\ManyToOne(inversedBy: 'films')]
     private ?Horaire $horaire = null;
 
+    #[ORM\Column]
+    private ?float $price = null;
+
     public function __construct()
     {
         $this->image = new ArrayCollection();
@@ -119,6 +122,18 @@ class Film
     public function setHoraire(?Horaire $horaire): static
     {
         $this->horaire = $horaire;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }

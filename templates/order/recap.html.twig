@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order Summary{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto form-control">
+                <h3 class="text-center mb-4">Récapitulatif de commande</h3>
+
+                <table class="table " style="line-height: 3rem;">
+                    <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Sous-total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in order.orderItems %}
+                        <tr>
+                            <td>{{ item.film.name }}</td>
+                            <td>{{ item.film.price }}€</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.quantity * item.film.price }}€</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Total:</strong></td>
+                        <td>{{ order.total }}€</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><strong>Payment Method : </strong></td>
+                        <td>
+                            {{ order.paymentMethod.cardNumber}}
+                        </td>
+                    </tr>
+
+                    </tfoot>
+                </table>
+                <div class="text-center mt-4">
+
+                    <a href="{{ path('app_pay',{id:order.id}) }}" class="btn btn-primary">Payer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Places</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Action</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% set totalPrice = 0 %}
+        {% for item in cart %}
+        <tr>
+            <td>{{ item.film.name }}</td>
+            <td>{{ item.film.price }}€</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.film.price * item.quantity }} €</td>
+            {% set totalPrice = totalPrice + item.film.price * item.quantity %}
+            <td>
+                <div>
+                    <a class="btn btn-warning" href="{{ path('app_cart_remove_one',{id:item.film.id,quantity:1}) }}">-</a>
+                    <a class="btn btn-success" href="{{ path('app_cart_add',{id:item.film.id,quantity:1}) }}">+</a>
+                    <a class="btn btn-danger" href="{{ path('app_cart_remove_row',{id:item.film.id}) }}">x</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr class="table-info">
+            <th>Total :</th>
+            <td>{{ total }} €</td>
+            <td><a class="btn btn-danger" href="{{ path('app_cart_emptycart') }}">vider le panier</a></td>
+            <td><a href="{{ path('app_selection') }}" class="btn btn-primary">Valider <i class="bi bi-bag-check"></i></a></td>
+        </tr>
+        </tfoot>
+
+    </table>
+
+{% endblock %}
