@@ -6,16 +6,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="{{ path("app_register") }}">Register</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_login") }}">Login</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_logout") }}">Logout</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_film") }}">Film</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_language") }}">Language</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_salle") }}">Salle</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_jour") }}">Jour</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_horaire") }}">Horaire</a>
+                {% if app.user %}
+                    <a class="nav-link active" aria-current="page" href="{{ path("app_logout") }}">Logout</a>
+                    <a class="nav-link active" aria-current="page" href="{{ path("app_profile") }}">Profile</a>
+                {% else %}
+                    <a class="nav-link active" aria-current="page" href="{{ path("app_register") }}">Register</a>
+                    <a class="nav-link active" aria-current="page" href="{{ path("app_login") }}">Login</a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <a class="nav-link active" aria-current="page" href="{{ path("app_film") }}">Film Admin</a>
+                {% endif %}
                 <a class="nav-link active" aria-current="page" href="{{ path("app_film_customer") }}">Film Customer</a>
-                <a class="nav-link active" aria-current="page" href="{{ path("app_profile") }}">Profile</a>
+
 {#                <a class="nav-link active" aria-current="page" href="{{ path("app_profile") }}">Profile</a>#}
 {#                <a class="nav-link active" aria-current="page" href="{{ path("app_category") }}">Categories</a>#}
 {#                <a class="nav-link active" aria-current="page" href="{{ path("app_product") }}">Products Admin</a>#}

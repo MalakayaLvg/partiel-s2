@@ -16,6 +16,9 @@
                     {% endfor %}
                     <div class="card-body">
                         <h5 class="card-title">{{ film.name }}</h5>
+                        <h6>{{ film.language.name }}</h6>
+                        <h6>{{ film.jour.jour }}</h6>
+                        <h6>{{ film.horaire.horaire }}</h6>
                         <a class="btn btn-warning" href="{{ path('app_cart_index_add',{id:film.id,quantity:1}) }}">Ajouter au panier</a>
                     </div>
                 </div>

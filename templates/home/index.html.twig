@@ -4,9 +4,12 @@
 
 {% block body %}
 
-    <h2>Welcome home bitch</h2>
+    <h2 class="text-center my-4">Welcome !</h2>
 
-    <a class="btn btn-primary" href="{{ path("app_film") }}">see movies</a>
-    <td><a class="btn btn-danger" href="{{ path('app_cart_emptycart') }}">vider le panier</a></td>
+
+    <div class="d-flex justify-content-center py-4">
+        <a class="btn btn-primary" href="{{ path("app_film") }}">Voir les films</a>
+
+    </div>
 
 {% endblock %}

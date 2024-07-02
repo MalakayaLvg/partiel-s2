@@ -8,6 +8,13 @@
         <a class="btn btn-success" href="{{ path("app_film_create") }}">add film</a>
     </div>
 
+    <div class="d-flex my-2">
+        <a class="btn btn-primary mx-3" href="{{ path("app_salle") }}">Salle</a>
+        <a class="btn btn-primary mx-3" href="{{ path("app_jour") }}">Jour</a>
+        <a class="btn btn-primary mx-3" href="{{ path("app_horaire") }}">Horaire</a>
+        <a class="btn btn-primary mx-3" href="{{ path("app_language") }}">Language</a>
+    </div>
+
     <div class="row">
         {% for film in films %}
         <div class="col-4 form-control">
@@ -15,6 +22,7 @@
             <h3>{{ film.salle.name }}</h3>
             <h3>{{ film.jour.jour }}</h3>
             <h3>{{ film.horaire.horaire }}</h3>
+{#            <h3>{{ film.language.name }}</h3>#}
             <div>
             {% if film.image %}
                 {% for image in film.image %}

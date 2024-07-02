@@ -38,6 +38,9 @@ class Film
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\ManyToOne(inversedBy: 'films')]
+    private ?Language $language = null;
+
     public function __construct()
     {
         $this->image = new ArrayCollection();
@@ -134,6 +137,18 @@ class Film
     public function setPrice(float $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?Language
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(?Language $language): static
+    {
+        $this->language = $language;
 
         return $this;
     }
