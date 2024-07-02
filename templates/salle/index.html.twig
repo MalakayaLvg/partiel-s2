@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LanguageController!{% endblock %}
+
+{% block body %}
+    <a class="btn btn-success" href="{{ path("app_salle_create") }}">create salle</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Places</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+        <tr>
+            <th scope="row">{{ salle.id }}</th>
+            <td>{{ salle.name }}</td>
+            <td>{{ salle.places }}</td>
+            <td><a class="btn btn-danger" href="{{ path("app_salle_delete",{id:salle.id}) }}">delete</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

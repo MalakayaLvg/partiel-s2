@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+
+    <div>
+        <a class="btn btn-success" href="{{ path("app_film_create") }}">add film</a>
+    </div>
+
+    <div class="row">
+        {% for film in films %}
+        <div class="col-4 form-control">
+            <h1>{{ film.name }}</h1>
+            <h3>{{ film.salle.name }}</h3>
+            <h3>{{ film.jour.jour }}</h3>
+            <h3>{{ film.horaire.horaire }}</h3>
+            <div>
+            {% if film.image %}
+                {% for image in film.image %}
+                    <div class="card">
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-danger" href="{{ path("app_film_image_delete",{id:image.id}) }}">delete</a>
+                        </div>
+                        <img class="mx-1" src="{{ vich_uploader_asset(image) }}" width="60px">
+                    </div>
+                {% endfor %}
+            {% else %}
+            <img src="{{ asset("images/default_image.jpg")}}" alt="image_default">
+            {% endif %}
+            <div>
+                <a class="btn btn-primary" href="{{ path("app_film_show",{id:film.id}) }}">show</a>
+                <a class="btn btn-danger" href="{{ path("app_film_delete",{id:film.id}) }}">delete</a>
+                <a class="btn btn-warning" href="{{ path("app_film_edit",{id:film.id}) }}">edit</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

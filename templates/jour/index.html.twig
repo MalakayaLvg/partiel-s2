@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LanguageController!{% endblock %}
+
+{% block body %}
+    <a class="btn btn-success" href="{{ path("app_jour_create") }}">create jour</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Jour</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jour in jours %}
+        <tr>
+            <th scope="row">{{ jour.id }}</th>
+            <td>{{ jour.jour }}</td>
+            <td><a class="btn btn-danger" href="{{ path("app_jour_delete",{id:jour.id}) }}">delete</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

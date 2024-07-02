@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_row(form.name,{attr:{'value':film.name}}) }}
+    <button type="submit" class="btn btn-warning">edit</button>
+    {{ form_end(form) }}
+
+{% endblock %}

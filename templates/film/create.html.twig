@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.salle) }}
+    {{ form_row(form.jour) }}
+    {{ form_row(form.horaire) }}
+    <button type="submit" class="btn btn-success">create</button>
+    {{ form_end(form) }}
+
+{% endblock %}

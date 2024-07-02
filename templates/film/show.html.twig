@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+
+
+    <h1 class="my-5">SHOW PAGE</h1>
+
+    <div class="col-4 form-control">
+        <h1>{{ film.name }}</h1>
+        image
+        <div>
+            <a class="btn btn-primary" href="{{ path("app_film") }}">back</a>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <h2>Add Image</h2>
+        {{ form_start(form,{attr: {action:path("app_film_show",{id:film.id})}}) }}
+        {{ form_row(form.imageFile) }}
+        <button type="submit" class="btn btn-primary">add</button>
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}
